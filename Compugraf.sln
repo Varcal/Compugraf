@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compugraf.Dominio.Testes", "tests\Compugraf.Dominio.Testes\Compugraf.Dominio.Testes.csproj", "{C2454EA3-1485-4990-BE80-C989DE78C124}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compugraf.Dominio", "src\Compugraf.Dominio\Compugraf.Dominio.csproj", "{9DB5A579-0887-4195-BFC0-C0FE81C8243F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2454EA3-1485-4990-BE80-C989DE78C124}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2454EA3-1485-4990-BE80-C989DE78C124}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2454EA3-1485-4990-BE80-C989DE78C124}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2454EA3-1485-4990-BE80-C989DE78C124}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DB5A579-0887-4195-BFC0-C0FE81C8243F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB5A579-0887-4195-BFC0-C0FE81C8243F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB5A579-0887-4195-BFC0-C0FE81C8243F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB5A579-0887-4195-BFC0-C0FE81C8243F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {99916429-69B7-4B75-A484-A9C8CB662F8F}
+	EndGlobalSection
+EndGlobal
