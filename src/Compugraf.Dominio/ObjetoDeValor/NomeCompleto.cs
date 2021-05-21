@@ -1,6 +1,8 @@
-﻿namespace Compugraf.Dominio.ObjetoDeValor
+﻿using System;
+
+namespace Compugraf.Dominio.ObjetoDeValor
 {
-    public class NomeCompleto
+    public class NomeCompleto: ValueObject
     {
         public string Nome { get; private set; }
         public string Sobrenome { get; private set; }
@@ -10,6 +12,9 @@
         {
             Nome = nome;
             Sobrenome = sobrenome;
+
+            if (string.IsNullOrWhiteSpace(Nome)) throw new ApplicationException("Nome é obrigatorio");
+            if (string.IsNullOrWhiteSpace(Sobrenome)) throw new ApplicationException("Sobrenome é obrigatorio");
         }
 
 

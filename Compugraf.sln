@@ -5,7 +5,17 @@ VisualStudioVersion = 16.0.31229.75
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compugraf.Dominio.Testes", "tests\Compugraf.Dominio.Testes\Compugraf.Dominio.Testes.csproj", "{C2454EA3-1485-4990-BE80-C989DE78C124}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compugraf.Dominio", "src\Compugraf.Dominio\Compugraf.Dominio.csproj", "{9DB5A579-0887-4195-BFC0-C0FE81C8243F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compugraf.Dominio", "src\Compugraf.Dominio\Compugraf.Dominio.csproj", "{9DB5A579-0887-4195-BFC0-C0FE81C8243F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compugraf.Dados", "src\Compugraf.Dados\Compugraf.Dados.csproj", "{014306FC-2847-4068-9704-1D4AB8494D24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compugraf.Api", "src\Compugraf.Api\Compugraf.Api.csproj", "{40B51040-B435-41A6-B193-E14D8CD7E306}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Compugraf.IoC", "src\Compugraf.IoC\Compugraf.IoC.csproj", "{0512DE1F-18CA-48AA-A2B8-A1CAB1E20D2B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C66B0D7E-DC85-4DCD-BF20-F98E8CA489EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E6D0ACB0-D3DA-4135-966E-2988C98FBA84}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +31,28 @@ Global
 		{9DB5A579-0887-4195-BFC0-C0FE81C8243F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9DB5A579-0887-4195-BFC0-C0FE81C8243F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9DB5A579-0887-4195-BFC0-C0FE81C8243F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{014306FC-2847-4068-9704-1D4AB8494D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014306FC-2847-4068-9704-1D4AB8494D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014306FC-2847-4068-9704-1D4AB8494D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014306FC-2847-4068-9704-1D4AB8494D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B51040-B435-41A6-B193-E14D8CD7E306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B51040-B435-41A6-B193-E14D8CD7E306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B51040-B435-41A6-B193-E14D8CD7E306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B51040-B435-41A6-B193-E14D8CD7E306}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0512DE1F-18CA-48AA-A2B8-A1CAB1E20D2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0512DE1F-18CA-48AA-A2B8-A1CAB1E20D2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0512DE1F-18CA-48AA-A2B8-A1CAB1E20D2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0512DE1F-18CA-48AA-A2B8-A1CAB1E20D2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C2454EA3-1485-4990-BE80-C989DE78C124} = {E6D0ACB0-D3DA-4135-966E-2988C98FBA84}
+		{9DB5A579-0887-4195-BFC0-C0FE81C8243F} = {C66B0D7E-DC85-4DCD-BF20-F98E8CA489EF}
+		{014306FC-2847-4068-9704-1D4AB8494D24} = {C66B0D7E-DC85-4DCD-BF20-F98E8CA489EF}
+		{40B51040-B435-41A6-B193-E14D8CD7E306} = {C66B0D7E-DC85-4DCD-BF20-F98E8CA489EF}
+		{0512DE1F-18CA-48AA-A2B8-A1CAB1E20D2B} = {C66B0D7E-DC85-4DCD-BF20-F98E8CA489EF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99916429-69B7-4B75-A484-A9C8CB662F8F}

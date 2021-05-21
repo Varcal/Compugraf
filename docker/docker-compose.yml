@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  api:
+    image: compugraf-api:latest
+    container_name: compugraf-api
+    build:
+        context: ../src
+        dockerfile: Dockerfile
+    ports:
+        - "5000:5000"
+    environment:
+      - ASPNETCORE_URLS=http://*:5000
+    depends_on:
+      - sqlserver
+
+  sqlserver:
+    container_name: 'mssql'
+    image: mcr.microsoft.com/mssql/server
+    restart: always
+    user: root
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Admin@123"
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql/
+
+volumes: 
+   sqlserver-data:
+     external: false
