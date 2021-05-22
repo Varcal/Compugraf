@@ -5,7 +5,7 @@ services:
     image: compugraf-api:latest
     container_name: compugraf-api
     build:
-        context: ../src
+        context: ../api/src
         dockerfile: Dockerfile
     ports:
         - "5000:5000"
