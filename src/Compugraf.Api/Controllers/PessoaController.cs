@@ -37,14 +37,14 @@ namespace Compugraf.Api.Controllers
             try
             {
                 var cpfExiste = await _pessoaRepositorio.CpfJaExiste(new Cpf(model.Cpf));
-                if (cpfExiste) return BadRequest("Cpf já cadastrado.");
+                if (cpfExiste) return BadRequest(new ResponseModel<string>(HttpStatusCode.BadRequest, "", "Cpf já cadastrado"));
 
                 var pessoa = model.ParaPessoa();
 
                 var resultado = await _pessoaRepositorio.Inserir(pessoa);
                 await _unitOfWork.SaveChanges();
 
-                var response = new ResponseModel<PessoaDetalhesModel>(HttpStatusCode.Accepted, new PessoaDetalhesModel(resultado), "Pessoa casdastrado com sucesso.");
+                var response = new ResponseModel<PessoaDetalhesModel>(HttpStatusCode.Created, new PessoaDetalhesModel(resultado), "Pessoa casdastrado com sucesso.");
                 return Created(string.Empty, response);
             }
             catch (Exception e)
@@ -105,7 +105,7 @@ namespace Compugraf.Api.Controllers
 
 
         [HttpGet]
-        [Route("skip/take")]
+        [Route("{skip?}/{take?}")]
         [ProducesResponseType(typeof(IList<PessoaDetalhesModel>), 200)]
         public async Task<IActionResult> Get(int? skip, int? take)
         {

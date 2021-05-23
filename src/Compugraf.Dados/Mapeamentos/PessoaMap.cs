@@ -66,8 +66,8 @@ namespace Compugraf.Dados.Mapeamentos
                     .IsRequired();
                 x.Property(x => x.Estado)
                     .HasColumnName("Estado")
-                    .HasColumnType("varchar")
-                    .HasMaxLength(100)
+                    .HasColumnType("char")
+                    .HasMaxLength(2)
                     .IsRequired();
                 x.Property(x => x.Logradouro)
                     .HasColumnName("Logradouro")

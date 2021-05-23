@@ -40,8 +40,15 @@ namespace Compugraf.Api
 
             //app.UseHttpsRedirection();
 
-            app.UseRouting();
+           
+            app.UseCors(x =>
+            {
+                x.AllowAnyHeader();
+                x.AllowAnyMethod();
+                x.AllowAnyOrigin();
+            });
 
+            app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
