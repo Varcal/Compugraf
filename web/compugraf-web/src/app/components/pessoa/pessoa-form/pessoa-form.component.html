@@ -1,0 +1,93 @@
+<div class="container">
+  <h4 class="mt-4">Cadrasto de pessoas</h4>
+  <form [formGroup]="form">
+    <div class="mt-5 mb-3">
+      <div class="row mb-3">
+        <div class="form-group col-6">
+          <label for="nome" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Ex: João" [(ngModel)]="pessoa.nome" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('nome')" msgErro="Nome é obrigatório">
+          </app-field-error-control>
+        </div>
+        <div class="form-group col-6">
+          <label for="sobrenome" class="form-label">Sobrenome</label>
+          <input type="text" class="form-control" id="sobrenome" formControlName="sobrenome" placeholder="Ex: da Silva" [(ngModel)]="pessoa.sobrenome" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('sobrenome')" msgErro="Sobrenome é obrigatório">
+          </app-field-error-control>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="form-group col-6">
+          <label for="cpf" class="form-label">CPF</label>
+          <input type="text" class="form-control" id="cpf" formControlName="cpf" placeholder="Ex: 000.000.000-00 " mask="000.000.000-00" [(ngModel)]="pessoa.cpf"  required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('cpf')" msgErro="CPF é obrigatório">
+          </app-field-error-control>
+        </div>
+        <div class="form-group  col-6">
+          <label for="nacionalidade" class="form-label">Nacionalidade</label>
+          <input type="text" class="form-control" id="nacionalidade"  formControlName="nacionalidade" placeholder="Ex: Brasileira" [(ngModel)]="pessoa.nacionalidade" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('nacionalidade')"
+            msgErro="Nacionalidade é obrigatória">
+          </app-field-error-control>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="form-group col-4">
+          <label for="cep" class="form-label">CEP</label>
+          <input type="text" class="form-control" id="cep" [(ngModel)]="pessoa.cep" formControlName="cep" placeholder="Ex: 00000-000" mask="00000-000"  (blur)="buscarPorCep()" [(ngModel)]="pessoa.cep" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('cep')" msgErro="CEP é obrigatório">
+          </app-field-error-control>
+        </div>
+        <div class="form-group  col-4">
+          <label for="estado" class="form-label">Estado</label>
+        
+          <ng-select placeholder="Selecione o Estado" formControlName="estado"
+          
+            [ngClass]="aplicaCssErro('estado')" 
+            [items]="estados" 
+            bindLabel="nome" 
+            bindValue="estado"
+            [(ngModel)]="pessoa.estado" 
+            required>
+          </ng-select>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('estado')" msgErro="Estado é obrigatório">
+          </app-field-error-control>
+        </div>
+        <div class="form-group  col-4">
+          <label for="cidade" class="form-label">Cidade</label>
+          <input type="text" class="form-control" id="cidade" formControlName="cidade" placeholder="Ex: São Paulo" [(ngModel)]="pessoa.cidade" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('cidade')" msgErro="Cidade é obrigatória">
+          </app-field-error-control>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="form-group col">
+          <label for="logradouro" class="form-label">Logradouro</label>
+          <input type="text" class="form-control" id="logradouro" formControlName="logradouro" placeholder="Ex: Rua Boa Vista, 253" [(ngModel)]="pessoa.logradouro" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('logradouro')"
+            msgErro="Logradouro é obrigatório">
+          </app-field-error-control>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="form-group col-6">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" formControlName="email" placeholder="Ex: email@email.com" [(ngModel)]="pessoa.email" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('email')" msgErro="E-mail é obrigatório">
+          </app-field-error-control>
+        </div>
+        <div class="form-group  col-6">
+          <label for="telefone" class="form-label">Telefone</label>
+          <input type="text" class="form-control" id="telefone" formControlName="telefone" placeholder="Ex: (11)2020-3030" mask="(00) 00000-0000" [(ngModel)]="pessoa.telefone" required>
+          <app-field-error-control [mostrarErro]="verificaValidTouched('telefone')" msgErro="Telefone é obrigatório">
+          </app-field-error-control>
+        </div>
+      </div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="button" class="btn btn-success" (click)="salvar()">Salvar</button>
+      <a type="button" class="btn btn-danger" role="button" routerLink="/pessoa">Voltar</a>
+    </div>
+  </form>
+</div>
