@@ -23,8 +23,8 @@
                         <a class="btn btn-primary btn-sm" [routerLink]="['editar', pessoa.id]">
                             <i><fa-icon [icon]="faPen"></fa-icon></i>
                         </a>
-                        <a class="btn btn-danger btn-sm">
-                            <i><fa-icon [icon]="faTimes"></fa-icon></i>
+                        <a class="btn btn-danger btn-sm" (click)="excluir(pessoa)">
+                            <i><fa-icon [icon]="faTimes" ></fa-icon></i>
                         </a>         
                     </div>
                       

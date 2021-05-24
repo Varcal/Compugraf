@@ -5,7 +5,7 @@ services:
     image: compugraf-web
     container_name: compugraf-web
     build: 
-        context: ../web/compugraf-web
+        context: ../web
         dockerfile: Dockerfile  
     ports: 
         - 80:80

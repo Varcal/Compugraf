@@ -10,4 +10,4 @@ RUN npm run build
 # Estagio 2 - Será responsavel por expor a aplicação
 FROM nginx
 COPY --from=node /app/dist/compugraf-web /usr/share/nginx/html
-COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+COPY ./nginx.conf /etc/nginx/conf.d/default.conf

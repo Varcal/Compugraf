@@ -5,7 +5,6 @@ import { BuscaCepService } from 'src/app/services/busca-cep.service';
 import { PessoaService } from 'src/app/services/pessoa.service';
 import { Pessoa } from '../../../models/Pessoa';
 import { ToastrService } from 'ngx-toastr';
-import { error } from 'selenium-webdriver';
 
 
 @Component({
@@ -18,38 +17,38 @@ export class PessoaFormComponent implements OnInit {
   pessoa: Pessoa = new Pessoa();
   estados: any[] = [];
   estadoSelecionado: any = undefined;
-  pessoaId:any;
-  
+  pessoaId: any;
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder, 
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute, private formBuilder: FormBuilder,
     private viaCepService: BuscaCepService, private pessoaService: PessoaService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.pessoaId = this.activatedRoute.snapshot.paramMap.get('id');
 
-    if(this.pessoaId){
+    if (this.pessoaId) {
       this.pessoaService.obterPorId(this.pessoaId)
-        .subscribe(resp=>{
-          if(resp.statusCode == 200)
-           this.pessoa = resp.data as Pessoa;
+        .subscribe(resp => {
+          if (resp.statusCode == 200)
+            this.pessoa = resp.data as Pessoa;
         },
-        e=>{
-          this.mostrarErro(e.error.statusCode, e.error.message);
-        })
+          e => {
+            this.mostrarErro(e.error.statusCode, e.error.message);
+          })
     }
 
 
     this.form = this.formBuilder.group({
-      nome: [this.pessoa.nome, [Validators.required]],
-      sobrenome: [this.pessoa.sobrenome, [Validators.required]],
-      cpf: [this.pessoa.cpf, Validators.required],
-      nacionalidade: [this.pessoa.nacionalidade, Validators.required],
-      cep: [this.pessoa.cep, Validators.required],
+      nome: [this.pessoa.nome, Validators.compose([Validators.required, Validators.minLength(3)])],
+      sobrenome: [this.pessoa.sobrenome, Validators.compose([Validators.required, Validators.minLength(3)])],
+      cpf: [this.pessoa.cpf, Validators.compose([Validators.required, Validators.minLength(11)])],
+      nacionalidade: [this.pessoa.nacionalidade, Validators.compose([Validators.pattern('[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$'), Validators.required])],
+      cep: [this.pessoa.cep, Validators.compose([Validators.required, Validators.minLength(8)])],
       estado: [this.pessoa.estado, Validators.required],
-      cidade: [this.pessoa.cidade, Validators.required],
-      logradouro: [this.pessoa.logradouro, Validators.required],
-      email: [this.pessoa.email, Validators.required],
-      telefone: [this.pessoa.telefone, Validators.required],
+      cidade: [this.pessoa.cidade, Validators.compose([Validators.required, Validators.minLength(3)])],
+      logradouro: [this.pessoa.logradouro, Validators.compose([Validators.required, Validators.minLength(3)])],
+      email: [this.pessoa.email, Validators.compose([Validators.required, Validators.email])],
+      telefone: [this.pessoa.telefone, Validators.compose([Validators.required, Validators.minLength(11)])],
     });
 
     this.carregarEstados();
@@ -114,47 +113,57 @@ export class PessoaFormComponent implements OnInit {
   }
 
 
-  salvar(){
+  salvar() {
     let pessoa = this.form.value;
-    if(this.pessoa.id == 0){
+    if (this.pessoa.id == 0) {
       this.registrar(pessoa);
-    }else{
+    } else {
       this.editar(this.pessoa);
     }
   }
 
-  registrar(pessoa: Pessoa){
+  registrar(pessoa: Pessoa) {
     this.pessoaService.registrar(pessoa)
-      .subscribe(resp =>{
-        if(resp.statusCode == 201){
+      .subscribe(resp => {
+        if (resp.statusCode == 201) {
           this.mostrarSucesso(resp.message);
           this.router.navigate(["/pessoa"])
-        }else{
-          this.mostrarErro(resp.statusCode.toString(), resp.message);
+        } else {
+          this.mostrarErro(resp.message, resp.statusCode.toString());
         }
-      }, e =>{
-        this.mostrarErro(e.error.statusCode, e.error.message);
+      }, e => {
+        this.mostrarErro(e.error.message, `Erro ${e.error.statusCode}`);
       })
   }
 
-  editar(pessoa: Pessoa){
+  editar(pessoa: Pessoa) {
     this.pessoaService.editar(pessoa)
-    .subscribe(resp =>{
-      if(resp.statusCode == 200){
-        this.mostrarSucesso(resp.message);
-        this.router.navigate(["/pessoa"])
-      }else{
-        this.mostrarErro(resp.statusCode.toString(), resp.message);
-      }
-    }, e =>{
-      this.mostrarErro(e.error.statusCode, e.error.message);
-    })
+      .subscribe(resp => {
+        if (resp.statusCode == 200) {
+          this.mostrarSucesso(resp.message);
+          this.router.navigate(["/pessoa"])
+        } else {
+          this.mostrarErro( resp.message, resp.statusCode.toString());
+        }
+      }, e => {
+        this.mostrarErro(e.error.message, e.error.statusCode);
+      })
   }
 
-  mostrarSucesso(msg:string){
-    this.toastr.success("", msg)
+  mostrarSucesso(msg: string) {
+    this.toastr.success(msg, "Sucesso")
   }
-  mostrarErro(code: string, msg:string){
+  mostrarErro(code: string, msg: string) {
     this.toastr.error(code, msg)
+  }
+
+  letterOnly(event) {
+    var charCode = event.keyCode;
+
+    if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 8)
+
+      return true;
+    else
+      return false;
   }
 }

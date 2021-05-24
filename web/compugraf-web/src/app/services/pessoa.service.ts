@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pessoa } from '../models/Pessoa';
 import { environment } from 'src/environments/environment';
@@ -8,6 +8,7 @@ import { ResponseModel } from '../models/ReponseModel';
   providedIn: 'root'
 })
 export class PessoaService {
+  atualizarPessoas:EventEmitter<boolean> = new EventEmitter<boolean>(); 
 
   constructor(private http: HttpClient) { }
 
@@ -20,6 +21,10 @@ export class PessoaService {
 
   editar(pessoa: Pessoa) {
     return this.http.put<ResponseModel<Pessoa>>(`${environment.API_URL}/${this.API_PESSOA}/${pessoa.id}`, pessoa);
+  }
+
+  excluir(pessoa: Pessoa) {
+    return this.http.delete<ResponseModel<Pessoa>>(`${environment.API_URL}/${this.API_PESSOA}/${pessoa.id}`);
   }
 
   listar(pagina: number, quantidade: number) {

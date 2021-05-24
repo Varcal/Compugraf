@@ -12,6 +12,7 @@ import { FieldErrorControlComponent } from '../shared/field-error-control/field-
 import { BuscaCepService } from 'src/app/services/busca-cep.service';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { PessoaService } from 'src/app/services/pessoa.service';
+import { PessoaExcluirModalComponent } from './pessoa-excluir-modal/pessoa-excluir-modal.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -22,7 +23,8 @@ const maskConfig: Partial<IConfig> = {
     PessoaPageComponent,
     PessoaFormComponent,
     PessoaListComponent,
-    FieldErrorControlComponent
+    FieldErrorControlComponent,
+    PessoaExcluirModalComponent
   ],
   imports: [
     CommonModule,

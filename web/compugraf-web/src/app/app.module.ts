@@ -8,6 +8,7 @@ import { NgxMaskModule, IConfig } from 'ngx-mask'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ToastrModule } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
 import { PessoaModule } from './components/pessoa/pessoa.module';
@@ -35,6 +36,7 @@ const maskConfig: Partial<IConfig> = {
     PessoaModule, 
     NgxMaskModule.forRoot(maskConfig),
     BrowserAnimationsModule,
+    ModalModule.forRoot(),
     ToastrModule.forRoot({
       timeOut: 5000,
       positionClass: 'toast-bottom-right',
