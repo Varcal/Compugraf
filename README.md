@@ -20,9 +20,9 @@ Caso ainda não tenha instalado segue o link: https://docs.docker.com/get-docker
  
 5 - Para acessar o banco de dados utilize o Visual Studio ou Management Studio
  
-*Server: localhost, 1433
-*User: sa
-*Password: Admin@123
+* Server: localhost, 1433
+* User: sa
+* Password: Admin@123
 
 
 por [Cleber Varçal](https://github.com/varcal)
