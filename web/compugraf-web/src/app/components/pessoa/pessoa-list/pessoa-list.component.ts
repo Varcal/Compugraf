@@ -29,8 +29,8 @@ export class PessoaListComponent implements OnInit {
   selecionar(pagina:number = 0, quantidade:number = 10){
     this.pessoaService.listar(pagina, quantidade)
     .subscribe(resp => {
-      this.pessoas =  resp.data as Pessoa[]; 
-    })
+        this.pessoas =  resp == null ? [] : resp.data; 
+    });
   }
 
   excluir(pessoa: Pessoa) {
