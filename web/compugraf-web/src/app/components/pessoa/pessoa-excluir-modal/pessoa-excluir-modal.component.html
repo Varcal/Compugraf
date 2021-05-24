@@ -1,0 +1,12 @@
+
+        <div class="modal-header">
+            <h4 class="modal-title pull-left ">{{title}}</h4>
+            <fa-icon [icon]="faTimes" class="close pull-right" (click)="bsModalRef.hide()"></fa-icon>
+        </div>
+        <div class="modal-body">
+          <p>Tem certeza que deseja excluir {{pessoa.nome}} {{pessoa.sobrenome}}.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" (click)="excluir()">{{btnSalvar}}</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="bsModalRef.hide()">{{btnCancelar}}</button>
+        </div>
